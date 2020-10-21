@@ -45,6 +45,7 @@ namespace ShiverMonoGame.src.engine.Input
         public bool GetPressData(string _key){
             for(int i = 0; i < curPressedKeys.Count; i++){
                 if(curPressedKeys[i].key == _key){
+                    //Console.WriteLine(curPressedKeys[i].key);
                     return true;
                 }
             }

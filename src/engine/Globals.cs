@@ -11,11 +11,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ShiverMonoGame.src.engine
 {
+    public delegate void PassObject(object i);
+    public delegate object PassObjectAndReturn(object i);
     public class Globals
     {
+
+        
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
+        public static GameTime gameTime;
 
         public static KeyBoardInput keyBoard;
+        public static MouseInput mouse;
+        
+        public static int screenWidth;
+        public static int screenHeight;
     }
 }

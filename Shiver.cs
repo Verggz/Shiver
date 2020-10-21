@@ -14,13 +14,14 @@ using ShiverMonoGame.src.engine.Input;
 
 namespace ShiverMonoGame
 {
-    public class Game1 : Game
+    public class Shiver : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private MainWorld world;
+        
 
-        public Game1()
+        public Shiver()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -35,8 +36,12 @@ namespace ShiverMonoGame
             //_graphics.PreferredBackBufferWidth= GraphicsDevice.DisplayMode.Width;
             //_graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
             //_graphics.IsFullScreen = true;
-            _graphics.PreferredBackBufferWidth = 1280;
-            _graphics.PreferredBackBufferHeight = 720;
+            Globals.screenWidth = 1280;
+            Globals.screenHeight = 720;
+
+            _graphics.PreferredBackBufferWidth = Globals.screenWidth;
+            _graphics.PreferredBackBufferHeight = Globals.screenHeight;
+
             _graphics.ApplyChanges();
 
             base.Initialize();
@@ -44,8 +49,10 @@ namespace ShiverMonoGame
 
         protected override void LoadContent()
         {
-            
+            Globals.screenWidth = _graphics.PreferredBackBufferWidth;
+            Globals.screenHeight = _graphics.PreferredBackBufferHeight;
             Globals.keyBoard = new KeyBoardInput();
+            Globals.mouse = new MouseInput();
             Globals.content = this.Content;
             Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -59,11 +66,16 @@ namespace ShiverMonoGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             
+            Globals.gameTime = gameTime;
+            
             Globals.keyBoard.Update();
+            Globals.mouse.Update();
 
-            world.Update();
+            world.Update(new Vector2(0,0),gameTime);
 
-            Globals.keyBoard.UpdateOldKeyboard();
+            Globals.keyBoard.UpdateOldKeyboard(); 
+            Globals.mouse.UpdateOld();
+
 
             // TODO: Add your update logic here
 
@@ -76,7 +88,7 @@ namespace ShiverMonoGame
 
             Globals.spriteBatch.Begin(SpriteSortMode.Deferred,BlendState.AlphaBlend);
 
-            world.Draw();
+            world.Draw(Vector2.Zero,gameTime);
 
             Globals.spriteBatch.End();
 
