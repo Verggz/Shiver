@@ -35,7 +35,7 @@ namespace ShiverMonoGame.src.engine.Input
         }
 
         public virtual void GetPressedKeys(){
-            bool found = false;
+            //bool found = false;
             curPressedKeys.Clear();
             for(int i = 0; i < newKeyboardState.GetPressedKeys().Length; i++){
                 curPressedKeys.Add(new KeyInput(newKeyboardState.GetPressedKeys()[i].ToString(),0));
