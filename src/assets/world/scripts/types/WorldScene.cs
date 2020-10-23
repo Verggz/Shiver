@@ -21,7 +21,7 @@ namespace ShiverMonoGame.src.assets.world.scripts.types
 {
     public class WorldScene : Scene
     {
-        public WorldScene(string _name, List<Entity> _entities,List<GameObject> _objects) : base(_name,_entities,_objects){
+        public WorldScene(string _name,Entity _player ,List<Entity> _entities,List<GameObject> _objects) : base(_name,_player,_entities,_objects){
 
         }
     }

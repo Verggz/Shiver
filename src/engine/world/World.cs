@@ -26,7 +26,7 @@ namespace ShiverMonoGame.src.engine.world
         public Vector2 offset;
 
         public World(GraphicsDevice device){
-
+            sceneManagers = new List<SceneManager>();
         }
 
         public virtual void Update(Vector2 _offset,GameTime gameTime){
@@ -38,7 +38,7 @@ namespace ShiverMonoGame.src.engine.world
         }
 
         public virtual SceneManager CreateSceneManager(string _name){
-            SceneManager newSceneManager = new SceneManager(_name,null);
+            SceneManager newSceneManager = new SceneManager(_name);
             sceneManagers.Add(newSceneManager);
 
             return newSceneManager;
@@ -51,6 +51,7 @@ namespace ShiverMonoGame.src.engine.world
                 }
             }
 
+            Console.WriteLine("Couldnt find");
             return null;
         }
 

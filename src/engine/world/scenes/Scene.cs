@@ -20,24 +20,21 @@ namespace ShiverMonoGame.src.engine.world.scenes
     public class Scene
     {
         public string name;
+        public Entity player;
         public List<Entity> entities;
         public List<GameObject> objects;
 
         public bool isWorld = true;
         public bool isShop = false;
 
-        public Scene(string _name,List<Entity> _entities,List<GameObject> _objects){
+        public Func<Vector2, Object> Update;
+        public Func<Vector2, Object> Draw;
+
+        public Scene(string _name,Entity _player,List<Entity> _entities,List<GameObject> _objects){
+            player = _player;
             name = _name;
             entities = _entities;
             objects = _objects;
-        }
-
-        public virtual void Update(){
-
-        }
-
-        public virtual void Draw(){
-
         }
     }
 }

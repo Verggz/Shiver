@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using ShiverMonoGame.src.engine;
-using ShiverMonoGame.src.engine.world;
+using ShiverMonoGame.src.assets.world;
 using ShiverMonoGame.src.engine.Input;
 
 namespace ShiverMonoGame

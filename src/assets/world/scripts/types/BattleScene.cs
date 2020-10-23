@@ -21,7 +21,7 @@ namespace ShiverMonoGame.src.assets.world.scripts.types
 {
     public class BattleScene : Scene
     {
-        public BattleScene(string _name, List<Entity> _entities,List<GameObject> _objects) : base(_name,_entities,_objects){
+        public BattleScene(string _name,Entity _player ,List<Entity> _entities,List<GameObject> _objects) : base(_name,_player,_entities,_objects){
             
         }
     }

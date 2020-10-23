@@ -23,10 +23,11 @@ namespace ShiverMonoGame.src.engine.world.scenes
         
         public string name;
         public List<Scene> scenes;
+        public IDictionary<string,Func<Object,Object>> funcs; 
 
-        public SceneManager(string _name,List<Scene> _scenes){
+        public SceneManager(string _name){
             name = _name;
-            scenes = _scenes;
+            scenes = new List<Scene>();
         }
 
         //Returns scene if found, else returns null
@@ -36,7 +37,6 @@ namespace ShiverMonoGame.src.engine.world.scenes
                     return scenes[i];
                 }
             }
-
             return null;
         }
 
@@ -45,8 +45,8 @@ namespace ShiverMonoGame.src.engine.world.scenes
         }
 
         //Creates a Scene and Returns and adds it to the
-        public Scene CreateScene(string _name, List<Entity> _entities,List<GameObject> _objects){
-            Scene newScene = new Scene(_name,_entities,_objects);
+        public Scene CreateScene(string _name,Entity player ,List<Entity> _entities,List<GameObject> _objects){
+            Scene newScene = new Scene(_name,player,_entities,_objects);
             scenes.Add(newScene);
             return newScene;
         }
